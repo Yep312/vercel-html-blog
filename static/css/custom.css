@@ -1,16 +1,1 @@
-* {
-  font-family: "ZhuZiAYuanJWD";
-}
-
-/* 布局最大宽度 */
-.layout {
-  max-width: 1440px;
-}
-
-/* 布局比例 */
-.layout > div:first-child {
-  width: 79%;
-}
-#aside-content {
-  width: 21%;
-}
+*{font-family:ZhuZiAYuanJWD}.layout{max-width:1440px}.layout>div:first-child{width:79%}#aside-content{width:21%}@media screen and (max-width:900px){#aside-content{width:100%}}
