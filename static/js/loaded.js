@@ -1,0 +1,1 @@
+setTimeout((()=>{document.getElementById("page-header").classList.add("nav-fixed"),yep.fullPage()}),10);const handleThemeChange=e=>{const s=(window.globalFn||{}).themeChange||{};s&&Object.keys(s).forEach((a=>{const n=s[a];["disqus","disqusjs"].includes(a)?setTimeout((()=>n(e)),300):n(e)}))};var anzhiyu_musicPlaying=!1,anzhiyu_musicFirst=!1;
