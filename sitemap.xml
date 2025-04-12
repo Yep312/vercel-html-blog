@@ -2,9 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.yep.vin/posts/3eeb.html</loc>
+    <loc>http://blog.yep.vin/static/friend.json</loc>
     
-    <lastmod>2025-04-11</lastmod>
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/static/owo.json</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/posts/d53b.html</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/posts/878a.html</loc>
+    
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/posts/da27.html</loc>
+    
+    <lastmod>2025-04-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -13,25 +49,34 @@
   <url>
     <loc>http://blog.yep.vin/manifest.json</loc>
     
-    <lastmod>2025-04-11</lastmod>
+    <lastmod>2025-04-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://blog.yep.vin/pages/categories/index.html</loc>
+    <loc>http://blog.yep.vin/page/categories/index.html</loc>
     
-    <lastmod>2025-04-11</lastmod>
+    <lastmod>2025-04-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://blog.yep.vin/pages/tags/index.html</loc>
+    <loc>http://blog.yep.vin/page/link/index.html</loc>
     
-    <lastmod>2025-04-11</lastmod>
+    <lastmod>2025-04-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/page/tags/index.html</loc>
+    
+    <lastmod>2025-04-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -40,11 +85,18 @@
 
   <url>
     <loc>http://blog.yep.vin/</loc>
-    <lastmod>2025-04-11</lastmod>
+    <lastmod>2025-04-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>http://blog.yep.vin/page/tags/Hexo/</loc>
+    <lastmod>2025-04-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 
   

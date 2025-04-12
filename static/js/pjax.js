@@ -1,0 +1,1 @@
+document.addEventListener("pjax:complete",(()=>{fullPage()}));
