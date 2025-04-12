@@ -1,1 +1,1 @@
-document.addEventListener("pjax:complete",(()=>{yep.fullPage(),setTimeout((()=>{document.getElementById("page-header").classList.add("nav-fixed")}),10)}));
+document.addEventListener("pjax:complete",(()=>{yep.fullPage(),document.getElementById("post-comment")&&yep.owoBig(),setTimeout((()=>{document.getElementById("page-header").classList.add("nav-fixed")}),10)}));
