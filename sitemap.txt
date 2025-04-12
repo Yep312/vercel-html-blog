@@ -1,12 +1,12 @@
 http://blog.yep.vin/static/owo.json
-http://blog.yep.vin/posts/d53b.html
-http://blog.yep.vin/posts/878a.html
-http://blog.yep.vin/posts/da27.html
-http://blog.yep.vin/manifest.json
 http://blog.yep.vin/page/about/index.html
 http://blog.yep.vin/page/categories/index.html
 http://blog.yep.vin/page/link/index.html
 http://blog.yep.vin/page/music/index.html
 http://blog.yep.vin/page/tags/index.html
+http://blog.yep.vin/posts/d53b.html
+http://blog.yep.vin/posts/878a.html
+http://blog.yep.vin/posts/da27.html
+http://blog.yep.vin/manifest.json
 http://blog.yep.vin/
 http://blog.yep.vin/page/tags/Hexo/
