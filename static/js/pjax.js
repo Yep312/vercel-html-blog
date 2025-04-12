@@ -1,1 +1,1 @@
-document.addEventListener("pjax:complete",(()=>{fullPage()}));
+document.addEventListener("pjax:complete",(()=>{fullPage(),setTimeout((()=>{document.getElementById("page-header").classList.add("nav-fixed")}),10)}));
