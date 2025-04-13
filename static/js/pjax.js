@@ -1,1 +1,1 @@
-document.addEventListener("pjax:complete",(()=>{yep.fullPage(),document.getElementById("post-comment")&&yep.owoBig(),setTimeout((()=>{document.getElementById("page-header").classList.add("nav-fixed")}),10)}));
+document.addEventListener("pjax:complete",(()=>{yep.fullPage(),document.getElementById("post-comment")&&yep.owoBig(),"/page/music/"==window.location.pathname?(document.body.setAttribute("data-theme","dark"),dark(!0)):document.body.removeAttribute("data-theme"),setTimeout((()=>{document.getElementById("page-header").classList.add("nav-fixed")}),10)}));
