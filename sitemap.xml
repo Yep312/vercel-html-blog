@@ -20,15 +20,6 @@
   </url>
   
   <url>
-    <loc>http://blog.yep.vin/page/tags/index.html</loc>
-    
-    <lastmod>2025-04-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.yep.vin/posts/d53b.html</loc>
     
     <lastmod>2025-04-13</lastmod>
@@ -83,6 +74,15 @@
   </url>
   
   <url>
+    <loc>http://blog.yep.vin/page/fcircle/index.html</loc>
+    
+    <lastmod>2025-04-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.yep.vin/page/link/index.html</loc>
     
     <lastmod>2025-04-13</lastmod>
@@ -93,6 +93,15 @@
   
   <url>
     <loc>http://blog.yep.vin/page/music/index.html</loc>
+    
+    <lastmod>2025-04-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/page/tags/index.html</loc>
     
     <lastmod>2025-04-13</lastmod>
     
