@@ -20,6 +20,51 @@
   </url>
   
   <url>
+    <loc>http://blog.yep.vin/page/about/index.html</loc>
+    
+    <lastmod>2025-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/page/categories/index.html</loc>
+    
+    <lastmod>2025-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/page/fcircle/index.html</loc>
+    
+    <lastmod>2025-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/page/link/index.html</loc>
+    
+    <lastmod>2025-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yep.vin/page/music/index.html</loc>
+    
+    <lastmod>2025-04-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.yep.vin/page/tags/index.html</loc>
     
     <lastmod>2025-04-18</lastmod>
@@ -66,51 +111,6 @@
   
   <url>
     <loc>http://blog.yep.vin/manifest.json</loc>
-    
-    <lastmod>2025-04-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.yep.vin/page/about/index.html</loc>
-    
-    <lastmod>2025-04-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.yep.vin/page/categories/index.html</loc>
-    
-    <lastmod>2025-04-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.yep.vin/page/fcircle/index.html</loc>
-    
-    <lastmod>2025-04-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.yep.vin/page/link/index.html</loc>
-    
-    <lastmod>2025-04-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.yep.vin/page/music/index.html</loc>
     
     <lastmod>2025-04-18</lastmod>
     
