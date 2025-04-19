@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>一键检查Butterfly主题友情链接</title>
+      <link href="/posts/cb21.html"/>
+      <url>/posts/cb21.html</url>
+      
+        <content type="html"><![CDATA[<p>看了 Zhheo 的使用 Python 来检查友链的文章（<a href="https://blog.zhheo.com/p/baa6b18b.html">Python 一键检查 Butterfly 主题友情链接可用性脚本 | 张洪 Heo</a>）后，突发灵感写了一个带 UI 的反链检查工具。</p><h2 id="源代码仓库">源代码仓库</h2><div class="tag link"><a class="link-card" title="Yep312/Hexo.Butterfly.BackLinksChecker" href="https://github.com/Yep312/Hexo.Butterfly.BackLinksChecker"><div class="left"><img src="/img/link.png"/></div><div class="right"><p class="text">Yep312/Hexo.Butterfly.BackLinksChecker</p><p class="url">https://github.com/Yep312/Hexo.Butterfly.BackLinksChecker</p></div></a></div><h2 id="友情链接获取">友情链接获取</h2><p>与 Python 脚本不同，本工具直接解析 html 获取友情链接。</p><figure class="highlight xpath"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//div[@class=<span class="string">&#x27;flink-list-item&#x27;</span>]</span><br></pre></td></tr></table></figure><h2 id="运行">运行</h2><h3 id="二进制文件">二进制文件</h3><p>可以从网盘中直接下载编译好的 window x64 的可执行文件</p><p><a href="https://wwep.lanzoul.com/iTe6b2txkxwf">https://wwep.lanzoul.com/iTe6b2txkxwf</a></p><h3 id="源代码运行">源代码运行</h3><p>需要 .Net sdk 8.0</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Yep312/Hexo.Butterfly.BackLinksChecker.git</span><br><span class="line"><span class="built_in">cd</span> Hexo.Butterfly.BackLinksChecker</span><br><span class="line">dotnet run</span><br></pre></td></tr></table></figure><hr><p>这个项目写的比较匆忙，代码写得比较随意。欢迎大家提 PR 为项目贡献！ヾ(•ω•`)o</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Butterfly </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Butterfly algolia在线搜索</title>
       <link href="/posts/d53b.html"/>
       <url>/posts/d53b.html</url>
@@ -57,25 +76,6 @@
         <tags>
             
             <tag> Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>一键检查Butterfly主题友情链接</title>
-      <link href="/posts/cb21.html"/>
-      <url>/posts/cb21.html</url>
-      
-        <content type="html"><![CDATA[<p>看了 Zhheo 的使用 Python 来检查友链的文章（<a href="https://blog.zhheo.com/p/baa6b18b.html">Python 一键检查 Butterfly 主题友情链接可用性脚本 | 张洪 Heo</a>）后，突发灵感写了一个带 UI 的反链检查工具。</p><h2 id="源代码仓库">源代码仓库</h2><div class="tag link"><a class="link-card" title="Yep312/Hexo.Butterfly.BackLinksChecker" href="https://github.com/Yep312/Hexo.Butterfly.BackLinksChecker"><div class="left"><img src="/img/link.png"/></div><div class="right"><p class="text">Yep312/Hexo.Butterfly.BackLinksChecker</p><p class="url">https://github.com/Yep312/Hexo.Butterfly.BackLinksChecker</p></div></a></div><h2 id="友情链接获取">友情链接获取</h2><p>与 Python 脚本不同，本工具直接解析 html 获取友情链接。</p><figure class="highlight xpath"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//div[@class=<span class="string">&#x27;flink-list-item&#x27;</span>]</span><br></pre></td></tr></table></figure><h2 id="运行">运行</h2><h3 id="二进制文件">二进制文件</h3><p>可以从网盘中直接下载编译好的 window x64 的可执行文件</p><p><a href="https://wwep.lanzoul.com/iTe6b2txkxwf">https://wwep.lanzoul.com/iTe6b2txkxwf</a></p><h3 id="源代码运行">源代码运行</h3><p>需要 .Net sdk 8.0</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/Yep312/Hexo.Butterfly.BackLinksChecker.git</span><br><span class="line"><span class="built_in">cd</span> Hexo.Butterfly.BackLinksChecker</span><br><span class="line">dotnet run</span><br></pre></td></tr></table></figure><hr><p>这个项目写的比较匆忙，代码写得比较随意。欢迎大家提 PR 为项目贡献！ヾ(•ω•`)o</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Butterfly </tag>
             
         </tags>
       
