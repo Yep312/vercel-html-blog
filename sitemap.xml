@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.yeppioo.vip/static/friend.json</loc>
+    
+    <lastmod>2025-07-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.yeppioo.vip/posts/d53b.html</loc>
     
     <lastmod>2025-07-03</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>http://blog.yeppioo.vip/posts/66d5.html</loc>
-    
-    <lastmod>2025-07-03</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.yeppioo.vip/static/friend.json</loc>
     
     <lastmod>2025-07-03</lastmod>
     
@@ -110,15 +110,6 @@
   </url>
   
   <url>
-    <loc>http://blog.yeppioo.vip/page/fcircle/index.html</loc>
-    
-    <lastmod>2025-06-22</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.yeppioo.vip/page/categories/index.html</loc>
     
     <lastmod>2025-06-22</lastmod>
@@ -128,7 +119,7 @@
   </url>
   
   <url>
-    <loc>http://blog.yeppioo.vip/page/tags/index.html</loc>
+    <loc>http://blog.yeppioo.vip/page/fcircle/index.html</loc>
     
     <lastmod>2025-06-22</lastmod>
     
@@ -138,6 +129,15 @@
   
   <url>
     <loc>http://blog.yeppioo.vip/page/music/index.html</loc>
+    
+    <lastmod>2025-06-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.yeppioo.vip/page/tags/index.html</loc>
     
     <lastmod>2025-06-22</lastmod>
     
