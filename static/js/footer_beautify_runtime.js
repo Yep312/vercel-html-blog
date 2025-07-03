@@ -1,1 +1,21 @@
-var now=new Date;function createtime(){var e=new Date("04/11/2025 00:00:00");now.setTime(now.getTime()+250);var t=(now-e)/1e3/60/60/24,n=Math.floor(t),a=(now-e)/1e3/60/60-24*n,o=Math.floor(a);1==String(o).length&&(o="0"+o);var r=(now-e)/1e3/60-1440*n-60*o,i=Math.floor(r);1==String(i).length&&(i="0"+i);var l=(now-e)/1e3-86400*n-3600*o-60*i,w=Math.round(l);1==String(w).length&&(w="0"+w);let g="";g=`<span class='textTip'>本站运行了 ${n} 天</span><span id='runtime'> ${o} 小时 ${i} 分 ${w} 秒 </span>`,document.getElementById("workboard")&&(document.getElementById("workboard").innerHTML=g)}setInterval((()=>{createtime()}),250);
+var now = new Date();
+function createtime() {
+    var t = new Date("04/11/2025 00:00:00");
+    now.setTime(now.getTime() + 250);
+    var e = (now - t) / 1e3 / 60 / 60 / 24,
+        a = Math.floor(e),
+        n = (now - t) / 1e3 / 60 / 60 - 24 * a,
+        r = Math.floor(n);
+    1 == String(r).length && (r = "0" + r);
+    var s = (now - t) / 1e3 / 60 - 1440 * a - 60 * r,
+        i = Math.floor(s);
+    1 == String(i).length && (i = "0" + i);
+    var o = (now - t) / 1e3 - 86400 * a - 3600 * r - 60 * i,
+        l = Math.round(o);
+    1 == String(l).length && (l = "0" + l);
+    let g = "";
+    (g = `<span class='textTip'>本站运行了 ${a} 天</span><span id='runtime'> ${r} 小时 ${i} 分 ${l} 秒 </span>`), document.getElementById("workboard") && (document.getElementById("workboard").innerHTML = g);
+}
+setInterval(() => {
+    createtime();
+}, 250);

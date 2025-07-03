@@ -1,1 +1,144 @@
-var stop,staticx,sakura_img=new Image;function Sakura(t,n,a,i,e){this.x=t,this.y=n,this.s=a,this.r=i,this.fn=e}function getRandom(t){var n,a;switch(t){case"x":n=Math.random()*window.innerWidth;break;case"y":n=Math.random()*window.innerHeight;break;case"s":n=Math.random();break;case"r":n=6*Math.random();break;case"fnx":a=1*Math.random()-.5,n=function(t,n){return t+.5*a-1.7};break;case"fny":a=1.5+.7*Math.random(),n=function(t,n){return n+a};break;case"fnr":a=.03*Math.random(),n=function(t){return t+a}}return n}function startSakura(){requestAnimationFrame=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame||window.oRequestAnimationFrame;var t,n=document.createElement("canvas");staticx=!0,n.height=window.innerHeight,n.width=window.innerWidth,n.setAttribute("style","position: fixed;left: 0;top: 0;pointer-events: none;"),n.setAttribute("id","canvas_sakura"),document.getElementsByTagName("body")[0].appendChild(n),t=n.getContext("2d");for(var a=new SakuraList,i=0;i<50;i++){var e,s,r,o,h,d,u;s=getRandom("x"),r=getRandom("y"),h=getRandom("r"),o=getRandom("s"),d=getRandom("fnx"),u=getRandom("fny"),randomFnR=getRandom("fnr"),(e=new Sakura(s,r,o,h,{x:d,y:u,r:randomFnR})).draw(t),a.push(e)}stop=requestAnimationFrame((function(){t.clearRect(0,0,n.width,n.height),a.update(),a.draw(t),stop=requestAnimationFrame(arguments.callee)}))}function stopp(){if(staticx){var t=document.getElementById("canvas_sakura");t.parentNode.removeChild(t),window.cancelAnimationFrame(stop),staticx=!1}else startSakura()}sakura_img.src="/static/img/sakura.png",Sakura.prototype.draw=function(t){t.save();this.s;t.translate(this.x,this.y),t.rotate(this.r),t.drawImage(sakura_img,0,0,40*this.s,40*this.s),t.restore()},Sakura.prototype.update=function(){this.x=this.fn.x(this.x,this.y),this.y=this.fn.y(this.y,this.y),this.r=this.fn.r(this.r),(this.x>window.innerWidth||this.x<0||this.y>window.innerHeight||this.y<0)&&(this.r=getRandom("fnr"),Math.random()>.4?(this.x=getRandom("x"),this.y=0,this.s=getRandom("s"),this.r=getRandom("r")):(this.x=window.innerWidth,this.y=getRandom("y"),this.s=getRandom("s"),this.r=getRandom("r")))},SakuraList=function(){this.list=[]},SakuraList.prototype.push=function(t){this.list.push(t)},SakuraList.prototype.update=function(){for(var t=0,n=this.list.length;t<n;t++)this.list[t].update()},SakuraList.prototype.draw=function(t){for(var n=0,a=this.list.length;n<a;n++)this.list[n].draw(t)},SakuraList.prototype.get=function(t){return this.list[t]},SakuraList.prototype.size=function(){return this.list.length},window.onresize=function(){document.getElementById("canvas_snow")},sakura_img.onload=function(){startSakura()};
+// 樱花飘落bynote.cn
+var stop, staticx;
+var sakura_img = new Image();
+sakura_img.src = "/static/img/sakura.png";
+function Sakura(x, y, s, r, fn) {
+    this.x = x;
+    this.y = y;
+    this.s = s;
+    this.r = r;
+    this.fn = fn;
+}
+Sakura.prototype.draw = function (cxt) {
+    cxt.save();
+    var xc = (40 * this.s) / 4;
+    cxt.translate(this.x, this.y);
+    cxt.rotate(this.r);
+    cxt.drawImage(sakura_img, 0, 0, 40 * this.s, 40 * this.s);
+    cxt.restore();
+};
+Sakura.prototype.update = function () {
+    this.x = this.fn.x(this.x, this.y);
+    this.y = this.fn.y(this.y, this.y);
+    this.r = this.fn.r(this.r);
+    if (this.x > window.innerWidth || this.x < 0 || this.y > window.innerHeight || this.y < 0) {
+        this.r = getRandom("fnr");
+        if (Math.random() > 0.4) {
+            this.x = getRandom("x");
+            this.y = 0;
+            this.s = getRandom("s");
+            this.r = getRandom("r");
+        } else {
+            this.x = window.innerWidth;
+            this.y = getRandom("y");
+            this.s = getRandom("s");
+            this.r = getRandom("r");
+        }
+    }
+};
+SakuraList = function () {
+    this.list = [];
+};
+SakuraList.prototype.push = function (sakura) {
+    this.list.push(sakura);
+};
+SakuraList.prototype.update = function () {
+    for (var i = 0, len = this.list.length; i < len; i++) {
+        this.list[i].update();
+    }
+};
+SakuraList.prototype.draw = function (cxt) {
+    for (var i = 0, len = this.list.length; i < len; i++) {
+        this.list[i].draw(cxt);
+    }
+};
+SakuraList.prototype.get = function (i) {
+    return this.list[i];
+};
+SakuraList.prototype.size = function () {
+    return this.list.length;
+};
+function getRandom(option) {
+    var ret, random;
+    switch (option) {
+        case "x":
+            ret = Math.random() * window.innerWidth;
+            break;
+        case "y":
+            ret = Math.random() * window.innerHeight;
+            break;
+        case "s":
+            ret = Math.random();
+            break;
+        case "r":
+            ret = Math.random() * 6;
+            break;
+        case "fnx":
+            random = -0.5 + Math.random() * 1;
+            ret = function (x, y) {
+                return x + 0.5 * random - 1.7;
+            };
+            break;
+        case "fny":
+            random = 1.5 + Math.random() * 0.7;
+            ret = function (x, y) {
+                return y + random;
+            };
+            break;
+        case "fnr":
+            random = Math.random() * 0.03;
+            ret = function (r) {
+                return r + random;
+            };
+            break;
+    }
+    return ret;
+}
+function startSakura() {
+    requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame;
+    var canvas = document.createElement("canvas"),
+        cxt;
+    staticx = true;
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.setAttribute("style", "position: fixed;left: 0;top: 0;pointer-events: none;");
+    canvas.setAttribute("id", "canvas_sakura");
+    document.getElementsByTagName("body")[0].appendChild(canvas);
+    cxt = canvas.getContext("2d");
+    var sakuraList = new SakuraList();
+    for (var i = 0; i < 50; i++) {
+        var sakura, randomX, randomY, randomS, randomR, randomFnx, randomFny;
+        randomX = getRandom("x");
+        randomY = getRandom("y");
+        randomR = getRandom("r");
+        randomS = getRandom("s");
+        randomFnx = getRandom("fnx");
+        randomFny = getRandom("fny");
+        randomFnR = getRandom("fnr");
+        sakura = new Sakura(randomX, randomY, randomS, randomR, { x: randomFnx, y: randomFny, r: randomFnR });
+        sakura.draw(cxt);
+        sakuraList.push(sakura);
+    }
+    stop = requestAnimationFrame(function () {
+        cxt.clearRect(0, 0, canvas.width, canvas.height);
+        sakuraList.update();
+        sakuraList.draw(cxt);
+        stop = requestAnimationFrame(arguments.callee);
+    });
+}
+window.onresize = function () {
+    var canvasSnow = document.getElementById("canvas_snow");
+};
+sakura_img.onload = function () {
+    startSakura();
+};
+function stopp() {
+    if (staticx) {
+        var child = document.getElementById("canvas_sakura");
+        child.parentNode.removeChild(child);
+        window.cancelAnimationFrame(stop);
+        staticx = false;
+    } else {
+        startSakura();
+    }
+}

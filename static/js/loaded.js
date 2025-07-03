@@ -1,1 +1,87 @@
-setTimeout((()=>{document.getElementById("page-header").classList.add("nav-fixed"),yeppioo.fullPage(),yeppioo.redirect(),"/page/music/"==window.location.pathname?(document.body.setAttribute("data-theme","dark"),dark(!0)):document.body.removeAttribute("data-theme"),"/page/link/"==window.location.pathname&&yeppioo.pasteLinkTemplate()}),10);const handleThemeChange=n=>{const e=(window.globalFn||{}).themeChange||{};e&&Object.keys(e).forEach((t=>{const a=e[t];["disqus","disqusjs"].includes(t)?setTimeout((()=>a(n)),300):a(n)}))};var anzhiyu_musicPlaying=!1,anzhiyu_musicFirst=!1;document.querySelector("#tp-weather-widget").addEventListener("click",(function(){window.innerWidth<=600&&setTimeout((()=>{document.querySelector("#tp-weather-widget > div > div.sc-gisBJw.jEbFAF").style="height: 100vh !important;"}),10)}));const fullPageStyle="\n#page .page-title {\n  display: none;\n}\n\n#body-wrap {\n  background: var(--global-bg) !important;\n}\n#page,\n#page:hover {\n  -webkit-box-shadow: none;\n  box-shadow: none;\n  background: transparent;\n  padding: 0;\n}\n#footer-wrap,\n#footer-wrap a {\n  color: var(--font-color);\n}\nh1.page-title + .tag-cloud-list {\n  display: flex;\n  justify-content: center;\n}\n.layout.hide-aside {\n  max-width: unset;\n}\ndiv#page {\n  background: transparent !important;\n}\n#aside-content {\n  display: none;\n}\n.layout > div:first-child {\n  width: 100%;\n  background: transparent !important;\n  border: none;\n  box-shadow: none !important;\n}\n#page-header {\n  height: unset !important;\n}\n#page-site-info {\n  display: none;\n}\n";
+setTimeout(() => {
+  document.getElementById('page-header').classList.add("nav-fixed");
+  yeppioo.fullPage()
+  yeppioo.redirect()
+  if (window.location.pathname == '/page/music/') {
+    document.body.setAttribute("data-theme", "dark")
+    dark(true)
+  } else {
+    document.body.removeAttribute("data-theme")
+  }
+  if (window.location.pathname == '/page/link/') {
+    yeppioo.pasteLinkTemplate();
+  }
+}, 10);
+
+const handleThemeChange = mode => {
+  const globalFn = window.globalFn || {}
+  const themeChange = globalFn.themeChange || {}
+  if (!themeChange) {
+    return
+  }
+
+  Object.keys(themeChange).forEach(key => {
+    const themeChangeFn = themeChange[key]
+    if (['disqus', 'disqusjs'].includes(key)) {
+      setTimeout(() => themeChangeFn(mode), 300)
+    } else {
+      themeChangeFn(mode)
+    }
+  })
+}
+
+var anzhiyu_musicPlaying = false;
+var anzhiyu_musicFirst = false;
+
+document.querySelector("#tp-weather-widget").addEventListener("click", function () {
+  if (window.innerWidth <= 600)
+    setTimeout(() => {
+      document.querySelector("#tp-weather-widget > div > div.sc-gisBJw.jEbFAF").style = 'height: 100vh !important;'
+    }, 10);
+});
+
+const fullPageStyle = `
+#page .page-title {
+  display: none;
+}
+
+#body-wrap {
+  background: var(--global-bg) !important;
+}
+#page,
+#page:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+}
+#footer-wrap,
+#footer-wrap a {
+  color: var(--font-color);
+}
+h1.page-title + .tag-cloud-list {
+  display: flex;
+  justify-content: center;
+}
+.layout.hide-aside {
+  max-width: unset;
+}
+div#page {
+  background: transparent !important;
+}
+#aside-content {
+  display: none;
+}
+.layout > div:first-child {
+  width: 100%;
+  background: transparent !important;
+  border: none;
+  box-shadow: none !important;
+}
+#page-header {
+  height: unset !important;
+}
+#page-site-info {
+  display: none;
+}
+`

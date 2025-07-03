@@ -1,1 +1,142 @@
-function initFriendApply(t=!1){const e="https://api.yeppioo.vip/api",n=document.getElementById("la-apply-form"),a=document.getElementById("la-form-msg"),r=document.getElementById("la-loader"),s=document.getElementById("la-table"),l=document.getElementById("la-table-body"),i=document.getElementById("la-empty"),d=n?n.querySelector(".la-btn"):null;function o(){r.style.display="flex",s.style.display="none",i.style.display="none",fetch(e+"/friend/list").then((t=>t.json())).then((t=>{r.style.display="none",t.success&&Array.isArray(t.list)&&t.list.length>0?(l.innerHTML="",t.list.forEach((t=>{const e=document.createElement("tr"),n=t.state||"待审核",a=function(t){switch(t){case"已通过":case"已批准":case"通过":return"la-state-success";case"待审核":case"审核中":return"la-state-pending";case"已拒绝":case"拒绝":return"la-state-rejected";default:return"la-state-other"}}(n);e.innerHTML=`\n                  <td>${t.name}</td>\n                  <td><a href="${t.link}" target="_blank">${t.link}</a></td>\n                  <td><img src="${t.avatarLink}" alt="avatar" onerror="this.onerror=null;this.src='/static/img/erravatar.png';"></td>\n                  <td>${t.descr}</td>\n                  <td><span class="la-state ${a}">${n}</span></td>\n                  <td>${function(t){if(!t)return"";const e=new Date(t);return e.getFullYear()+"-"+(e.getMonth()+1).toString().padStart(2,"0")+"-"+e.getDate().toString().padStart(2,"0")+" "+e.getHours().toString().padStart(2,"0")+":"+e.getMinutes().toString().padStart(2,"0")}(t.createdAt)}</td>\n                `,l.appendChild(e)})),s.style.display=""):i.style.display=""})).catch((()=>{r.style.display="none",i.style.display=""}))}n&&d&&(t||n.addEventListener("submit",(function(t){t.preventDefault(),a.textContent="";const r=new FormData(n),s={name:r.get("name"),link:r.get("link"),avatarLink:r.get("avatarLink"),email:r.get("email"),descr:r.get("descr")};if(!(s.name&&s.link&&s.avatarLink&&s.email&&s.descr))return void(a.textContent="请填写完整信息");/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email)?(a.textContent="正在提交...",d.disabled=!0,fetch(e+"/friend/apply",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(s)}).then((t=>{if(!t.ok)throw new Error("网络错误");return t.json()})).then((()=>{a.style.color="#27ae60",a.textContent="申请成功，等待审核！",n.reset(),d.disabled=!1,o()})).catch((()=>{a.style.color="#e74c3c",a.textContent="提交失败，请稍后重试",d.disabled=!1}))):a.textContent="请输入有效的邮箱地址"})),o())}initFriendApply(),document.addEventListener("pjax:complete",(()=>{setTimeout((()=>{initFriendApply(!0)}),0)}));
+function initFriendApply(isLoaded = false) {
+    const API_BASE = 'https://api.yeppioo.vip/api';
+    const form = document.getElementById('la-apply-form');
+    const msg = document.getElementById('la-form-msg');
+    const loader = document.getElementById('la-loader');
+    const table = document.getElementById('la-table');
+    const tbody = document.getElementById('la-table-body');
+    const empty = document.getElementById('la-empty');
+    const submitBtn = form ? form.querySelector('.la-btn') : null;
+
+    if (!form || !submitBtn) return;
+
+    // 加载申请列表
+    function loadList() {
+        loader.style.display = 'flex';
+        table.style.display = 'none';
+        empty.style.display = 'none';
+        fetch(API_BASE + '/friend/list')
+            .then(res => res.json())
+            .then(data => {
+                loader.style.display = 'none';
+                if (data.success && Array.isArray(data.list) && data.list.length > 0) {
+                    tbody.innerHTML = '';
+                    data.list.forEach(item => {
+                        const tr = document.createElement('tr');
+                        // 添加状态列
+                        const state = item.state || '待审核';
+                        // 根据状态设置不同的样式
+                        const stateClass = getStateClass(state);
+                        tr.innerHTML = `
+                  <td>${item.name}</td>
+                  <td><a href="${item.link}" target="_blank">${item.link}</a></td>
+                  <td><img src="${item.avatarLink}" alt="avatar" onerror="this.onerror=null;this.src='/static/img/erravatar.png';"></td>
+                  <td>${item.descr}</td>
+                  <td><span class="la-state ${stateClass}">${state}</span></td>
+                  <td>${formatTime(item.createdAt)}</td>
+                `;
+                        tbody.appendChild(tr);
+                    });
+                    table.style.display = '';
+                } else {
+                    empty.style.display = '';
+                }
+            })
+            .catch(() => {
+                loader.style.display = 'none';
+                empty.style.display = '';
+            });
+    }
+
+    // 根据状态返回对应的CSS类名
+    function getStateClass(state) {
+        switch (state) {
+            case '已通过':
+            case '已批准':
+            case '通过':
+                return 'la-state-success';
+            case '待审核':
+            case '审核中':
+                return 'la-state-pending';
+            case '已拒绝':
+            case '拒绝':
+                return 'la-state-rejected';
+            default:
+                return 'la-state-other';
+        }
+    }
+
+    if (!isLoaded) {
+        // 表单提交
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            msg.textContent = '';
+            const formData = new FormData(form);
+
+            // 获取表单数据，包含邮箱字段
+            const data = {
+                name: formData.get('name'),
+                link: formData.get('link'),
+                avatarLink: formData.get('avatarLink'),
+                email: formData.get('email'), // 新增邮箱字段
+                descr: formData.get('descr')
+            };
+
+            // 简单校验，确保所有字段都已填写
+            if (!data.name || !data.link || !data.avatarLink || !data.email || !data.descr) {
+                msg.textContent = '请填写完整信息';
+                return;
+            }
+
+            // 验证邮箱格式
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                msg.textContent = '请输入有效的邮箱地址';
+                return;
+            }
+
+            msg.textContent = '正在提交...';
+            submitBtn.disabled = true;
+            fetch(API_BASE + '/friend/apply', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => {
+                    if (!res.ok) throw new Error('网络错误');
+                    return res.json();
+                })
+                .then(() => {
+                    msg.style.color = '#27ae60';
+                    msg.textContent = '申请成功，等待审核！';
+                    form.reset();
+                    submitBtn.disabled = false;
+                    loadList();
+                })
+                .catch(() => {
+                    msg.style.color = '#e74c3c';
+                    msg.textContent = '提交失败，请稍后重试';
+                    submitBtn.disabled = false;
+                });
+        });
+    }
+
+    // 时间格式化
+    function formatTime(str) {
+        if (!str) return '';
+        const d = new Date(str);
+        return d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate().toString().padStart(2, '0') + ' ' + d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+    }
+
+    loadList();
+}
+
+initFriendApply()
+
+document.addEventListener('pjax:complete', () => {
+    setTimeout(() => {
+        initFriendApply(true);
+    }, 0);
+});

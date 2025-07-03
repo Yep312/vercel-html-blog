@@ -1,1 +1,125 @@
-function initialize_fc_lite(){UserConfig={private_api_url:UserConfig?.private_api_url||"",page_turning_number:UserConfig?.page_turning_number||20,error_img:UserConfig?.error_img||"https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite@latest/static/favicon.ico"};const e=document.getElementById("friend-circle-lite-root");if(!e)return;e.innerHTML="";var t=document.createElement("i");t.className="fas fa-angle-double-down";const n=document.createElement("div");n.id="random-article",e.appendChild(n);const a=document.createElement("div");a.className="articles-container",a.id="articles-container",e.appendChild(a);const i=document.createElement("button");i.id="load-more-btn",i.appendChild(t),e.appendChild(i);const r=document.createElement("div");r.id="stats-container",e.appendChild(r);let o=0,d=[];function l(){const e="friend-circle-lite-cache",n="friend-circle-lite-cache-time",a=localStorage.getItem(n),r=(new Date).getTime();if(a&&r-a<6e5){const t=JSON.parse(localStorage.getItem(e));if(t)return void c(t)}fetch(`${UserConfig.private_api_url}all.json`).then((e=>e.json())).then((t=>{localStorage.setItem(e,JSON.stringify(t)),localStorage.setItem(n,r.toString()),c(t)})).finally((()=>{i.appendChild(t)}))}function c(t){d=t.article_data;const n=t.statistical_data;r.innerHTML=`\n            <div>Powered by: <a href="https://github.com/willow-god/Friend-Circle-Lite" target="_blank">FriendCircleLite</a><br></div>\n            <div>Designed By: <a href="https://yeppioo.vip/" target="_blank">Yeppioo</a><br></div>\n            <div>订阅:${n.friends_num}   活跃:${n.active_num}   总文章数:${n.article_num}<br></div>\n            <div>更新时间:${n.last_updated_time}</div>\n        `,s(),d.slice(o,o+UserConfig.page_turning_number).forEach((t=>{const n=document.createElement("div");n.className="card";const i=document.createElement("a");i.className="card-title",i.innerText=t.title,n.appendChild(i),i.onclick=()=>window.open(t.link,"_blank");const r=document.createElement("div");r.className="card-author";const o=document.createElement("img");o.className="no-lightbox",o.src=t.avatar||UserConfig.error_img,o.onerror=()=>o.src=UserConfig.error_img,r.appendChild(o),r.appendChild(document.createTextNode(t.author)),n.appendChild(r),r.onclick=()=>{!function(t,n,a){if(!document.getElementById("fclite-modal")){const t=document.createElement("div");t.id="modal",t.className="modal",t.innerHTML='\n            <div class="modal-content">\n                <img id="modal-author-avatar" src="" alt="">\n                <a id="modal-author-name-link"></a>\n                <div id="modal-articles-container"></div>\n                <img id="modal-bg" src="" alt="">\n            </div>\n            ',e.appendChild(t)}const i=document.getElementById("modal"),r=document.getElementById("modal-articles-container"),o=document.getElementById("modal-author-avatar"),l=document.getElementById("modal-author-name-link"),c=document.getElementById("modal-bg");r.innerHTML="",o.src=n||UserConfig.error_img,o.onerror=()=>o.src=UserConfig.error_img,c.src=n||UserConfig.error_img,c.onerror=()=>c.src=UserConfig.error_img,l.innerText=t,l.href=new URL(a).origin;const s=d.filter((e=>e.author===t));s.slice(0,4).forEach((e=>{const t=document.createElement("div");t.className="modal-article";const n=document.createElement("a");n.className="modal-article-title",n.innerText=e.title,n.href=e.link,n.target="_blank",t.appendChild(n);const a=document.createElement("div");a.className="modal-article-date",a.innerText="📅"+e.created.substring(0,10),t.appendChild(a),r.appendChild(t)})),i.style.display="block",setTimeout((()=>{i.classList.add("modal-open")}),10)}(t.author,t.avatar,t.link)};const l=document.createElement("div");l.className="card-date",l.innerText="🗓️"+t.created.substring(0,10),n.appendChild(l);const c=document.createElement("img");c.className="card-bg no-lightbox",c.src=t.avatar||UserConfig.error_img,c.onerror=()=>c.src=UserConfig.error_img,n.appendChild(c),a.appendChild(n)})),o+=UserConfig.page_turning_number,o>=d.length&&(i.style.display="none")}function s(){const e=d[Math.floor(Math.random()*d.length)];n.innerHTML=`\n        <p class="random-section-title">🎣 随机钓鱼 <a href="#" id="refresh-random-article"><i class="fa-solid fa-arrow-rotate-right"></i></a></p>\n        <div class="random-article-container">\n            <div class="random-container">\n                <a target="_blank" href="${e.link}" class="random-title">${e.title}</a>\n                <div class="random-author">作者: ${e.author}</div>\n            </div>\n        </div>`,document.getElementById("refresh-random-article").addEventListener("click",(function(e){e.preventDefault(),s()}))}l(),i.addEventListener("click",l),window.onclick=function(t){const n=document.getElementById("modal");t.target===n&&function(){const t=document.getElementById("modal");t.classList.remove("modal-open"),t.addEventListener("transitionend",(()=>{t.style.display="none",e.removeChild(t)}),{once:!0})}()}}function whenDOMReady(){initialize_fc_lite()}whenDOMReady(),document.addEventListener("pjax:complete",initialize_fc_lite);
+function initialize_fc_lite() {
+    UserConfig = { private_api_url: UserConfig?.private_api_url || "", page_turning_number: UserConfig?.page_turning_number || 20, error_img: UserConfig?.error_img || "https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite@latest/static/favicon.ico" };
+    const e = document.getElementById("friend-circle-lite-root");
+    if (!e) return;
+    e.innerHTML = "";
+    var newElement = document.createElement("i");
+    newElement.className = "fas fa-angle-double-down";
+    const n = document.createElement("div");
+    (n.id = "random-article"), e.appendChild(n);
+    const t = document.createElement("div");
+    (t.className = "articles-container"), (t.id = "articles-container"), e.appendChild(t);
+    const i = document.createElement("button");
+    (i.id = "load-more-btn"), (i.appendChild(newElement)), e.appendChild(i);
+    const a = document.createElement("div");
+    (a.id = "stats-container"), e.appendChild(a);
+    let r = 0,
+        o = [];
+    function d() {
+        const e = "friend-circle-lite-cache",
+            n = "friend-circle-lite-cache-time",
+            t = localStorage.getItem(n),
+            a = new Date().getTime();
+        if (t && a - t < 6e5) {
+            const n = JSON.parse(localStorage.getItem(e));
+            if (n) return void l(n);
+        }
+        fetch(`${UserConfig.private_api_url}all.json`)
+            .then((e) => e.json())
+            .then((t) => {
+                localStorage.setItem(e, JSON.stringify(t)), localStorage.setItem(n, a.toString()), l(t);
+            })
+            .finally(() => {
+                i.appendChild(newElement)
+            });
+    }
+    function l(n) {
+        o = n.article_data;
+        const d = n.statistical_data;
+        (a.innerHTML = `\n            <div>Powered by: <a href="https://github.com/willow-god/Friend-Circle-Lite" target="_blank">FriendCircleLite</a><br></div>\n            <div>Designed By: <a href="https://yeppioo.vip/" target="_blank">Yeppioo</a><br></div>\n            <div>订阅:${d.friends_num}   活跃:${d.active_num}   总文章数:${d.article_num}<br></div>\n            <div>更新时间:${d.last_updated_time}</div>\n        `), c();
+        o.slice(r, r + UserConfig.page_turning_number).forEach((n) => {
+            const i = document.createElement("div");
+            i.className = "card";
+            const a = document.createElement("a");
+            (a.className = "card-title"), (a.innerText = n.title), i.appendChild(a), (a.onclick = () => window.open(n.link, "_blank"));
+            const r = document.createElement("div");
+            r.className = "card-author";
+            const d = document.createElement("img");
+            (d.className = "no-lightbox"),
+                (d.src = n.avatar || UserConfig.error_img),
+                (d.onerror = () => (d.src = UserConfig.error_img)),
+                r.appendChild(d),
+                r.appendChild(document.createTextNode(n.author)),
+                i.appendChild(r),
+                (r.onclick = () => {
+                    !(function (n, t, i) {
+                        if (!document.getElementById("fclite-modal")) {
+                            const n = document.createElement("div");
+                            (n.id = "modal"), (n.className = "modal"), (n.innerHTML = '\n            <div class="modal-content">\n                <img id="modal-author-avatar" src="" alt="">\n                <a id="modal-author-name-link"></a>\n                <div id="modal-articles-container"></div>\n                <img id="modal-bg" src="" alt="">\n            </div>\n            '), e.appendChild(n);
+                        }
+                        const a = document.getElementById("modal"),
+                            r = document.getElementById("modal-articles-container"),
+                            d = document.getElementById("modal-author-avatar"),
+                            l = document.getElementById("modal-author-name-link"),
+                            c = document.getElementById("modal-bg");
+                        (r.innerHTML = ""), (d.src = t || UserConfig.error_img), (d.onerror = () => (d.src = UserConfig.error_img)), (c.src = t || UserConfig.error_img), (c.onerror = () => (c.src = UserConfig.error_img)), (l.innerText = n), (l.href = new URL(i).origin);
+                        const s = o.filter((e) => e.author === n);
+                        s.slice(0, 4).forEach((e) => {
+                            const n = document.createElement("div");
+                            n.className = "modal-article";
+                            const t = document.createElement("a");
+                            (t.className = "modal-article-title"), (t.innerText = e.title), (t.href = e.link), (t.target = "_blank"), n.appendChild(t);
+                            const i = document.createElement("div");
+                            (i.className = "modal-article-date"), (i.innerText = "📅" + e.created.substring(0, 10)), n.appendChild(i), r.appendChild(n);
+                        }),
+                            (a.style.display = "block"),
+                            setTimeout(() => {
+                                a.classList.add("modal-open");
+                            }, 10);
+                    })(n.author, n.avatar, n.link);
+                });
+            const l = document.createElement("div");
+            (l.className = "card-date"), (l.innerText = "🗓️" + n.created.substring(0, 10)), i.appendChild(l);
+            const c = document.createElement("img");
+            (c.className = "card-bg no-lightbox"), (c.src = n.avatar || UserConfig.error_img), (c.onerror = () => (c.src = UserConfig.error_img)), i.appendChild(c), t.appendChild(i);
+        }),
+            (r += UserConfig.page_turning_number),
+            r >= o.length && (i.style.display = "none");
+    }
+    function c() {
+        const e = o[Math.floor(Math.random() * o.length)];
+        n.innerHTML = `
+        <p class="random-section-title">🎣 随机钓鱼 <a href="#" id="refresh-random-article"><i class="fa-solid fa-arrow-rotate-right"></i></a></p>
+        <div class="random-article-container">
+            <div class="random-container">
+                <a target="_blank" href="${e.link}" class="random-title">${e.title}</a>
+                <div class="random-author">作者: ${e.author}</div>
+            </div>
+        </div>`;
+        document.getElementById("refresh-random-article").addEventListener("click", function (e) {
+            e.preventDefault(), c();
+        });
+    }
+    d(),
+        i.addEventListener("click", d),
+        (window.onclick = function (n) {
+            const t = document.getElementById("modal");
+            n.target === t &&
+                (function () {
+                    const n = document.getElementById("modal");
+                    n.classList.remove("modal-open"),
+                        n.addEventListener(
+                            "transitionend",
+                            () => {
+                                (n.style.display = "none"), e.removeChild(n);
+                            },
+                            { once: !0 }
+                        );
+                })();
+        });
+}
+function whenDOMReady() {
+    initialize_fc_lite();
+}
+whenDOMReady(), document.addEventListener("pjax:complete", initialize_fc_lite);
+//# sourceMappingURL=/sm/e243e0b6036d5f901c776acc4d38a86765c31647dbd80766f36329f4505bf6a6.map
