@@ -843,7 +843,3 @@ a:hover .url {
 #recent-posts .recent-post-item .post_cover .post-bg {
   transform: none !important;
 }
-
-#recent-posts .recent-post-item>.recent-post-info>.content {
-  max-height: 85px !important;
-}

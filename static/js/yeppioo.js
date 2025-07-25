@@ -51,7 +51,6 @@ const yeppioo = {
         }
     },
     pasteLinkTemplate: function () {
-        return;
         document.querySelector(".el-textarea__inner").value = "```yml \n  - name: 显示昵称 (请勿包含博客等字样）\n    link: 站点链接 (要求博客地址，请勿提交个人主页）\n    avatar: 站点头像\n    descr: 站点描述\n```";
         // document.querySelector(".el-textarea__inner").focus();
         setTimeout(() => {
